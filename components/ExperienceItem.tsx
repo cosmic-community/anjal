@@ -1,4 +1,5 @@
 import type { WorkExperience } from '@/types'
+import TechStackChips from './TechStackChips'
 
 interface ExperienceItemProps {
   experience: WorkExperience
@@ -62,16 +63,13 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
         />
       )}
 
-      {technologies && technologies.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-4">
-          {technologies.map((tech, index) => (
-            <span
-              key={index}
-              className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-medium"
-            >
-              {tech}
-            </span>
-          ))}
+      {Array.isArray(technologies) && technologies.length > 0 && (
+        <div className="mt-4">
+          <TechStackChips
+            skills={technologies.filter(
+              (tech) => tech && typeof tech === 'object'
+            )}
+          />
         </div>
       )}
     </div>

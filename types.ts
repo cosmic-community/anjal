@@ -50,7 +50,7 @@ export interface WorkExperience extends CosmicObject {
     current_role?: boolean
     end_date?: string
     description?: string
-    technologies?: string[]
+    technologies?: Skill[]
   }
 }
 
